@@ -184,21 +184,21 @@ dialog::backdrop{background:#0005;backdrop-filter:blur(4px)}
 <body>
 <header class="site-header shopify-section-group-header-group">
 <a href="./" class="brand" aria-label="The Runway home"><svg class="mark" width="34" height="30" viewBox="0 0 34 30" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 28M22 2l9 26"/><path d="M17 5v3M17 12v4M17 20v6"/><path d="M1 21q16-9 32 0"/></svg><span class="wm">The Runway</span></a>
-<nav aria-label="Main navigation"><a href="./">Home</a><a class="x" href="https://nike-makknzjs.myshopify.com/pages/nike-orbit" target="_blank" rel="noopener noreferrer">Nike Orbit</a><a class="x" href="https://nike-makknzjs.myshopify.com/pages/scene-rail" target="_blank" rel="noopener noreferrer">Hand Rail Pro</a><a href="./" aria-current="page">Runway</a></nav>
+<nav aria-label="Main navigation"><a href="./">Home</a><a href="./" aria-current="page">Runway</a></nav>
 <button id="open-bag" aria-label="Open styling bag"><svg width="22" height="24" viewBox="0 0 24 26" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 8h16l1 16H3L4 8zM8 8V6a4 4 0 0 1 8 0v2"/></svg><span data-cart-count>0</span></button>
 </header>
 <main><runway-section id="Runway-template--28035983671601__the_runway_wdM8BG" class="rw" data-speed="5000"></runway-section></main>
 <dialog id="bag-dialog"><div class="bh"><h2>Your styling bag</h2><button id="close-bag" aria-label="Close styling bag">×</button></div>
-<p class="bn2">A local outfit shortlist. No payment or order is collected here. Open a piece on the original demo to continue.</p>
+<p class="bn2">A local outfit shortlist. No payment or order is collected here.</p>
 <div id="bag-items"></div><p id="bag-total"></p><button id="export-bag">Download outfit shortlist</button></dialog>
 <div id="bag-status" role="status" aria-live="polite"></div>
 <script>
-const A='https://reel-ref-try-the-look.vercel.app/assets/',S='https://nike-makknzjs.myshopify.com/products/';
+const A='https://reel-ref-try-the-look.vercel.app/assets/',S='#';
 const SH=['40','41','42','43','44','45','46'],AP=['S','L','M','XL'];
 const P={
-ajr:{n:'Air Jordan 12 Retro',v:'Nikey | Password: 1',p:149,i:'source-tatum-5-orbit-copy',h:400,u:'tatum-5-orbit-copy',L:'Shoe size',o:SH,ids:[57015167025457,57015167058225,57015167090993,57015167123761,57015167156529,57015167189297,57015167222065]},
-t5:{n:'Tatum 5 Orbit',v:'Nikey | Password: 1',p:149,i:'source-tatum-5-orbit',h:400,u:'tatum-5-orbit',L:'Shoe size',o:SH,ids:[57015166730545,57015166763313,57015166796081,57015166828849,57015166861617,57015166894385,57015166927153]},
-l5:{n:'Luka 5',v:'Nikey | Password: 1',p:149,i:'source-air-jordan-12-retro-copy',h:400,u:'air-jordan-12-retro-copy',L:'Shoe size',o:SH,ids:[57015176364337,57015176397105,57015176429873,57015176462641,57015176495409,57015176528177,57015176560945]},
+ajr:{n:'Cream Low Sneaker',v:'Nikey | Password: 1',p:149,i:'source-tatum-5-orbit-copy',h:400,u:'tatum-5-orbit-copy',L:'Shoe size',o:SH,ids:[57015167025457,57015167058225,57015167090993,57015167123761,57015167156529,57015167189297,57015167222065]},
+t5:{n:'Classic High Sneaker',v:'Nikey | Password: 1',p:149,i:'source-tatum-5-orbit',h:400,u:'tatum-5-orbit',L:'Shoe size',o:SH,ids:[57015166730545,57015166763313,57015166796081,57015166828849,57015166861617,57015166894385,57015166927153]},
+l5:{n:'Black Low Sneaker',v:'Nikey | Password: 1',p:149,i:'source-air-jordan-12-retro-copy',h:400,u:'air-jordan-12-retro-copy',L:'Shoe size',o:SH,ids:[57015176364337,57015176397105,57015176429873,57015176462641,57015176495409,57015176528177,57015176560945]},
 ts:{n:'Tshirt',v:'Nike',p:199,i:'source-tshirt',h:563,u:'tshirt',L:'Size',o:AP,ids:[56835911582001,56835911614769,56835911647537,56835911680305]},
 sw:{n:'Sweatshirt',v:'Nike',p:199,i:'source-sweatshirt',h:581,u:'sweatshirt',L:'Size',o:AP,ids:[56835806396721,56835806429489,56835806462257,56835806495025]},
 sp:{n:'Sweatshirt Plus',v:'Nike',p:199,i:'source-sweatshirt-plus',h:610,u:'sweatshirt-plus',L:'Size',o:AP,ids:[56836143743281,56836143776049,56836143808817,56836143841585]},
@@ -223,7 +223,7 @@ const Bag={
   const box=$('#bag-items');box.innerHTML='';let tot=0;
   if(!a.length)box.innerHTML='<p class="bn2">Your styling bag is empty. Choose a size beside a piece to save it.</p>';
   a.forEach(e=>{const v=VARS.get(e.id),p=P[v.k];tot+=p.p*e.quantity;const r=document.createElement('div');r.className='brow';
-   r.innerHTML=`<img alt="${p.n}" src="${A+p.i}.webp"><div><h3>${p.n}</h3><p>Size ${v.o} · Quantity ${e.quantity} · ${money(p.p)}</p><a href="${S+p.u}" target="_blank" rel="noopener noreferrer">View original piece ↗</a></div><button aria-label="Remove ${p.n}">×</button>`;
+   r.innerHTML=`<img alt="${p.n}" src="${A+p.i}.webp"><div><h3>${p.n}</h3><p>Size ${v.o} · Quantity ${e.quantity} · ${money(p.p)}</p><a href="${S+p.u}" target="_blank" rel="noopener noreferrer">View piece ↗</a></div><button aria-label="Remove ${p.n}">×</button>`;
    r.querySelector('button').onclick=()=>{this.save(this.load().filter(x=>x.id!==e.id));this.render()};box.appendChild(r)});
   $('#bag-total').textContent=a.length?'Reference subtotal '+money(tot):'';$('#export-bag').disabled=!a.length}};
 let tt;function toast(m){const t=$('#bag-status');t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('on'),2500)}
@@ -245,7 +245,7 @@ connectedCallback(){
  const rows=(l,li)=>l[3].map((k,j)=>{const p=P[k],n=j+1,pid=`Picker-template--28035983671601__the_runway_wdM8BG-look_${l[4]}-${n}`;
   return`<li class="item" data-card="${n}" style="--i:${n}">${l[5]&&j===(li===1?1:1)?'<span class="tag"><span>New</span></span>':''}
 <a class="media" href="${S+p.u}" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true"><img src="${A+p.i}.webp" loading="lazy" decoding="async" alt="" width="400" height="${p.h}"><span class="num">${n}</span></a>
-<div class="info"><span class="type">${p.v}</span><a class="name" href="${S+p.u}" target="_blank" rel="noopener noreferrer">${p.n}</a><span class="price"><span>${money(p.p)}</span></span></div>
+<div class="info"><span class="type">The Runway</span><a class="name" href="${S+p.u}" target="_blank" rel="noopener noreferrer">${p.n}</a><span class="price"><span>${money(p.p)}</span></span></div>
 <button class="add" data-add="${k}" aria-expanded="false" aria-controls="${pid}" aria-label="Add to bag: ${p.n}"><svg class="pl2" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M12 4v16M4 12h16"/></svg><svg class="ck" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4.5 12.5l5 5L19.5 7"/></svg></button>
 <div class="picker" id="${pid}" hidden><button class="pcl" data-pclose aria-label="Close sizes">×</button><fieldset><legend>${p.L}</legend><div class="vals">${p.o.map((o,x)=>`<label class="pill"><input type="radio" name="Opt-${pid}-1" value="${p.ids[x]}" data-rw-option="0"${x?'':' checked'}><span>${o}</span></label>`).join('')}</div></fieldset>
 <button class="confirm" data-confirm><span>Add to bag</span><span class="rw__sr"> — ${p.n}</span></button></div></li>`}).join('');
