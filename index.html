@@ -2,6 +2,9 @@
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#ffffff">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 30'%3E%3Crect width='34' height='30' fill='white'/%3E%3Cg fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round'%3E%3Cpath d='M12 2 3 28M22 2l9 26M17 5v3M17 12v4M17 20v6M1 21q16-9 32 0'/%3E%3C/g%3E%3C/svg%3E">
+<meta property="og:type" content="website"><meta property="og:title" content="The Runway"><meta property="og:description" content="Six looks, styled head to toe. Explore the runway and shop the look."><meta property="og:image" content="https://reel-ref-try-the-look.vercel.app/assets/original-look-1.webp"><meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap" rel="stylesheet">
 <title>Try the Look — Runway</title>
 <meta name="description" content="Six looks, styled head to toe. Explore the runway, isolate a look, and tap a pin to see the piece.">
 <style>
@@ -131,6 +134,8 @@ dialog::backdrop{background:#0005;backdrop-filter:blur(4px)}
 .brow a{font-size:12px;text-decoration:underline;text-underline-offset:3px}.brow button{font-size:20px;padding:12px}
 #bag-total{text-align:right;font-size:15px;padding:12px 0;margin:0}
 #export-bag{width:100%;background:#151413;color:#fff;padding:16px 20px}#export-bag:disabled{opacity:.4}
+#order-bag{width:100%;background:#0e0e0e;color:#fff;padding:16px 20px;margin-bottom:10px}#order-bag:disabled{opacity:.4}
+.jf{display:flex;flex-direction:column;gap:12px;margin-top:16px}.jf input,.jf textarea{padding:12px;border:1px solid #c8c8c8;font-size:14px;width:100%;border-radius:0}.jf button{background:#151413;color:#fff;padding:16px 20px}
 #bag-status{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#151413;color:#fff;padding:12px 20px;font-size:12px;z-index:2147483002;opacity:0;transition:opacity .25s;pointer-events:none}
 #bag-status.on{opacity:1}
 .item:after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:#0e0e0e;transform:scaleX(0);transform-origin:left;transition:transform .9s var(--ease)}.item:hover:after,.item.hot:after{transform:scaleX(1)}.item.hot .num{background:#0e0e0e;color:#fff}
@@ -184,13 +189,14 @@ dialog::backdrop{background:#0005;backdrop-filter:blur(4px)}
 <body>
 <header class="site-header shopify-section-group-header-group">
 <a href="./" class="brand" aria-label="The Runway home"><svg class="mark" width="34" height="30" viewBox="0 0 34 30" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 28M22 2l9 26"/><path d="M17 5v3M17 12v4M17 20v6"/><path d="M1 21q16-9 32 0"/></svg><span class="wm">The Runway</span></a>
-<nav aria-label="Main navigation"><a href="./">Home</a><a href="./" aria-current="page">Runway</a></nav>
+<nav aria-label="Main navigation"><a href="./">Home</a><a href="./" aria-current="page">Runway</a><a href="#join" id="open-join">Join</a></nav>
 <button id="open-bag" aria-label="Open styling bag"><svg width="22" height="24" viewBox="0 0 24 26" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 8h16l1 16H3L4 8zM8 8V6a4 4 0 0 1 8 0v2"/></svg><span data-cart-count>0</span></button>
 </header>
 <main><runway-section id="Runway-template--28035983671601__the_runway_wdM8BG" class="rw" data-speed="5000"></runway-section></main>
 <dialog id="bag-dialog"><div class="bh"><h2>Your styling bag</h2><button id="close-bag" aria-label="Close styling bag">×</button></div>
 <p class="bn2">A local outfit shortlist. No payment or order is collected here.</p>
-<div id="bag-items"></div><p id="bag-total"></p><button id="export-bag">Download outfit shortlist</button></dialog>
+<div id="bag-items"></div><p id="bag-total"></p><button id="order-bag">Order on WhatsApp</button><button id="export-bag">Download outfit shortlist</button></dialog>
+<dialog id="join-dialog"><div class="bh"><h2>Join The Runway</h2><button id="close-join" aria-label="Close" style="font-size:28px;width:44px;height:44px">×</button></div><p class="bn2">Want to be featured? Tell us about you and we'll get back to you.</p><form class="jf" id="join-form"><input name="name" placeholder="Your name" required><input name="city" placeholder="City"><input name="handle" placeholder="Instagram handle"><textarea name="about" rows="3" placeholder="Tell us about your style"></textarea><button type="submit">Send</button></form></dialog>
 <div id="bag-status" role="status" aria-live="polite"></div>
 <script>
 const A='https://reel-ref-try-the-look.vercel.app/assets/',S='#';
@@ -225,10 +231,16 @@ const Bag={
   a.forEach(e=>{const v=VARS.get(e.id),p=P[v.k];tot+=p.p*e.quantity;const r=document.createElement('div');r.className='brow';
    r.innerHTML=`<img alt="${p.n}" src="${A+p.i}.webp"><div><h3>${p.n}</h3><p>Size ${v.o} · Quantity ${e.quantity} · ${money(p.p)}</p><a href="${S+p.u}" target="_blank" rel="noopener noreferrer">View piece ↗</a></div><button aria-label="Remove ${p.n}">×</button>`;
    r.querySelector('button').onclick=()=>{this.save(this.load().filter(x=>x.id!==e.id));this.render()};box.appendChild(r)});
-  $('#bag-total').textContent=a.length?'Reference subtotal '+money(tot):'';$('#export-bag').disabled=!a.length}};
+  $('#bag-total').textContent=a.length?'Reference subtotal '+money(tot):'';$('#export-bag').disabled=$('#order-bag').disabled=!a.length}};
 let tt;function toast(m){const t=$('#bag-status');t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('on'),2500)}
 $('#open-bag').onclick=()=>{Bag.render();$('#bag-dialog').showModal()};
 $('#close-bag').onclick=()=>$('#bag-dialog').close();
+const CONTACT={wa:'',email:'hello@example.com'}; /* put your WhatsApp number (digits only, with country code) in wa, e.g. '2348012345678', and your email in email */
+const send=(subj,text)=>{if(CONTACT.wa)window.open(`https://wa.me/${CONTACT.wa}?text=${encodeURIComponent(text)}`,'_blank','noopener');else location.href=`mailto:${CONTACT.email}?subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(text)}`};
+$('#order-bag').onclick=()=>{const a=Bag.load();let t=0;const l=a.map(e=>{const v=VARS.get(e.id),p=P[v.k];t+=p.p*e.quantity;return`${p.n} · Size ${v.o} · Qty ${e.quantity} · ${money(p.p)}`});send('The Runway order',`Hi, I'd like to order:\n\n${l.join('\n')}\n\nSubtotal ${money(t)}`)};
+$('#open-join').onclick=e=>{e.preventDefault();$('#join-dialog').showModal()};
+$('#close-join').onclick=()=>$('#join-dialog').close();
+$('#join-form').onsubmit=e=>{e.preventDefault();const f=new FormData(e.target);send('Join The Runway',`Name: ${f.get('name')}\nCity: ${f.get('city')}\nInstagram: ${f.get('handle')}\nAbout me: ${f.get('about')}`);$('#join-dialog').close();toast('Thanks! Your message is ready to send')};
 $('#bag-dialog').addEventListener('click',e=>{const r=e.currentTarget.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)e.currentTarget.close()});
 $('#export-bag').onclick=()=>{const lines=Bag.load().map(e=>{const v=VARS.get(e.id),p=P[v.k];return`${p.n} · Size ${v.o} · Quantity ${e.quantity}\n${S+p.u}`});
  const b=new Blob(['RUNWAY — STYLING SHORTLIST\n\nReference prices; no order or payment has been placed.\n\n\n'+lines.join('\n\n')],{type:'text/plain;charset=utf-8'});
@@ -332,7 +344,7 @@ connectedCallback(){
   if(c=t.closest('[data-tick]'))return go(+c.dataset.tick);
   if(c=t.closest('[data-auto]')){if(!playing)engaged=false;return play(!playing)}
   if(c=t.closest('[data-go]')){const a=+c.closest('.body').dataset.i,idx=[...bs].indexOf(c.closest('.body')),k=rank(idx);if(k===0)openLb();else if(Math.abs(k)<6)moveTo(Math.round(target)+k);return}
-  if(c=t.closest('[data-add]')){const card=c.closest('.item');if(card.classList.contains('added'))return;const pk=card.querySelector('.picker'),open=pk.hidden;pk.hidden=!open;card.classList.toggle('pick',open);c.setAttribute('aria-expanded',open);if(open)pk.querySelector('input:checked').focus({preventScroll:true});return}
+  if(c=t.closest('[data-add]')){const card=c.closest('.item');if(card.classList.contains('added'))return;const pk=card.querySelector('.picker'),open=pk.hidden;if(mob&&open)$$('.item.pick',self).forEach(x=>{x.querySelector('.picker').hidden=true;x.classList.remove('pick');$('.add',x).setAttribute('aria-expanded',false)});pk.hidden=!open;card.classList.toggle('pick',open);c.setAttribute('aria-expanded',open);if(open)pk.querySelector('input:checked').focus({preventScroll:true});return}
   if(c=t.closest('[data-confirm]')){const card=c.closest('.item');card.dataset.touched='1';return addCards([card],c.closest('.lp'))}
   if(c=t.closest('[data-all]')){const p=c.closest('.lp'),msg=$('.msg',p);msg.textContent='';if(p.classList.contains('done'))return;
    const cards=$$('.item',p).filter(x=>!x.classList.contains('added')),ready=cards.filter(x=>x.dataset.touched),pend=cards.filter(x=>!x.dataset.touched);
