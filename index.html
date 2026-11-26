@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#ffffff">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 30'%3E%3Crect width='34' height='30' fill='white'/%3E%3Cg fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round'%3E%3Cpath d='M12 2 3 28M22 2l9 26M17 5v3M17 12v4M17 20v6M1 21q16-9 32 0'/%3E%3C/g%3E%3C/svg%3E">
 <meta property="og:type" content="website"><meta property="og:title" content="The Runway"><meta property="og:description" content="Six looks, styled head to toe. Explore the runway and shop the look."><meta property="og:image" content="https://reel-ref-try-the-look.vercel.app/assets/original-look-1.webp"><meta name="twitter:card" content="summary_large_image">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet">
 <title>Try the Look — Runway</title>
 <meta name="description" content="Six looks, styled head to toe. Explore the runway, isolate a look, and tap a pin to see the piece.">
 <style>
@@ -200,6 +200,28 @@ html.dark{filter:invert(1) hue-rotate(180deg)}html.dark img,html.dark .wa{filter
 .tick[aria-current=true] .bar:after{background:var(--acc)}
 .lotw{flex-wrap:wrap;text-align:center}
 @media(max-width:749px){.site-header{padding:0 14px;gap:8px}nav{gap:10px}nav a:first-child{display:none}.wm{font-size:13px}.mark{width:22px}#theme,#open-bag{min-width:36px}}
+:root{--acc:#b08d57}
+.rw .title,.shh h2,.bh h2,.wm,.ph h3,.lbn,.bp strong,.foot b,.mhead-title{font-family:'Cormorant Garamond',Georgia,serif}
+.rw .title{font-size:58px;font-weight:500;letter-spacing:-.01em}.shh h2{font-size:44px;font-weight:500}.site-header .wm{font-size:22px;font-weight:600}.ph h3{font-size:24px}
+.site-header{border-bottom:1px solid #eee}nav{font-weight:500;letter-spacing:.04em}
+.lotw{text-transform:uppercase;letter-spacing:.2em;font-size:10px;background:#151413}.lotw span{color:#e8d3aa}
+.cta,.confirm,#pay-bag,#order-bag{text-transform:uppercase;letter-spacing:.16em;font-size:11px}
+.shop{padding:88px 56px 72px;background:linear-gradient(#fff,#faf8f5)}.shh{margin-bottom:44px}
+.sg2{gap:44px 28px}.pim{position:relative}.pim:after{content:"Quick view";position:absolute;left:0;right:0;bottom:0;padding:14px;text-align:center;background:rgb(255 255 255/.94);font-size:10px;letter-spacing:.22em;text-transform:uppercase;transform:translateY(101%);transition:transform .6s var(--ease)}.pc:hover .pim:after{transform:none}
+.pt{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--acc);margin-top:12px}.pn{margin-top:0;font-size:14px}.pp{font-size:13px;color:var(--ink)}
+.chip{letter-spacing:.14em;text-transform:uppercase;font-size:10px}
+.trust{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 48px;padding:32px 20px;border-top:1px solid #eee;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.foot{background:#151413;color:#a9a49c;padding:64px 56px 48px;border:0}.foot b{color:#fff;font-size:28px;font-weight:500}.foot a{color:#fff}
+dialog{border:0;box-shadow:0 40px 120px -30px rgb(0 0 0/.45);padding:28px;width:min(480px,100vw - 24px)}
+.bh{position:sticky;top:0;background:#fff;z-index:2;margin:-28px -28px 0;padding:24px 28px 12px}.bh h2{font-size:32px;font-weight:500}
+.brow{grid-template-columns:72px 1fr auto;gap:16px;padding:20px 0;border-bottom:1px solid #eee}.brow img{width:72px;height:92px;background:#f6f4f0;padding:6px}
+.qty{display:inline-flex;align-items:center;border:1px solid #ddd;border-radius:30px}.qty .qb{width:34px;height:34px;border:0;border-radius:50%}.qty b{min-width:22px;text-align:center;font-size:12px}
+#bag-total{font-size:16px;font-weight:600;padding:18px 0}
+#co{margin:8px 0 14px;gap:10px}.jf input,.jf textarea{padding:14px;border-color:#ddd}.jf input:focus,.jf textarea:focus{outline:0;border-color:#151413}
+#pay-bag{background:#151413;min-height:58px}
+#order-bag{background:#fff;color:#151413;border:1px solid #151413}#order-bag:hover{background:#151413;color:#fff}
+#export-bag{background:none;color:var(--muted);text-decoration:underline;font-size:12px;padding:10px}
+@media(max-width:749px){.rw .title{font-size:min(40px,11vw)}.shop{padding:56px 20px 48px}.shh h2{font-size:36px}.foot{padding:44px 20px 100px}.site-header .wm{font-size:18px}}
 @media(max-width:1099px){.grid{grid-template-columns:minmax(0,1fr) 340px}}
 @media(max-width:749px){
 .site-header{height:68px;padding:0 20px;gap:18px}.mark{width:26px;height:23px}.wm{font-size:14px}nav{gap:14px;font-size:11px}nav a{padding:15px 0}nav a.x{display:none}
@@ -227,10 +249,11 @@ html.dark{filter:invert(1) hue-rotate(180deg)}html.dark img,html.dark .wa{filter
 <main><runway-section id="Runway-template--28035983671601__the_runway_wdM8BG" class="rw" data-speed="5000"></runway-section>
 <div class="mq" aria-hidden="true"><div>The Runway ✦ Six looks ✦ Styled head to toe ✦ Tap a pin ✦ Shop the look ✦ The Runway ✦ Six looks ✦ Styled head to toe ✦ Tap a pin ✦ Shop the look</div></div>
 <section class="shop" id="shop"><div class="shh rv"><h2>Shop all</h2><div class="chips" id="chips"></div><select id="sort" aria-label="Sort"><option value="">Featured</option><option value="lo">Price: low to high</option><option value="hi">Price: high to low</option></select></div><div class="sg2" id="shopgrid"></div></section></main>
+<div class="trust rv"><span>Secure checkout with Flutterwave</span><span>Chat with us on WhatsApp</span><span>Pay online or on WhatsApp</span></div>
 <footer class="foot rv"><b>The Runway</b><span>Six looks, styled head to toe. Explore the runway, save your favourites and order in a message.</span><span id="foot-links"></span><span>© 2026 The Runway</span></footer>
 <a class="wa" href="#" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24" width="26" height="26" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 2a8 8 0 1 1-4.2 14.8l-.3-.2-2.4.6.7-2.3-.2-.3A8 8 0 0 1 12 4z"/></svg></a>
-<dialog id="bag-dialog"><div class="bh"><h2>Your styling bag</h2><button id="close-bag" aria-label="Close styling bag">×</button></div>
-<p class="bn2">A local outfit shortlist. No payment or order is collected here.</p>
+<dialog id="bag-dialog"><div class="bh"><h2>Your bag</h2><button id="close-bag" aria-label="Close styling bag">×</button></div>
+<p class="bn2">Review your order, then pay securely online or send it on WhatsApp.</p>
 <div id="bag-items"></div><p id="bag-total"></p><form id="co" class="jf"><input name="name" placeholder="Full name" required><input name="email" type="email" placeholder="Email" required><input name="phone" placeholder="Phone number" required><input name="addr" placeholder="Delivery address" required></form><button id="pay-bag">Pay online</button><button id="order-bag">Place order on WhatsApp</button><button id="export-bag">Download outfit shortlist</button></dialog>
 <dialog id="join-dialog"><div class="bh"><h2>Join The Runway</h2><button id="close-join" aria-label="Close" style="font-size:28px;width:44px;height:44px">×</button></div><p class="bn2">Want to be featured? Tell us about you and we'll get back to you.</p><form class="jf" id="join-form"><input name="name" placeholder="Your name" required><input name="city" placeholder="City"><input name="handle" placeholder="Instagram handle"><textarea name="about" rows="3" placeholder="Tell us about your style"></textarea><button type="submit">Send</button></form></dialog>
 <dialog id="prod-dialog"><div class="bh"><h2 id="pd-name"></h2><button id="close-prod" aria-label="Close" style="font-size:28px;width:44px;height:44px">×</button></div><img id="pd-img" alt="" style="width:100%;max-height:50vh;object-fit:contain;background:#f6f6f4;margin:12px 0"><p id="pd-price" style="margin:0 0 4px;font-size:16px"></p><p class="bn2" id="pd-desc"></p><fieldset><legend id="pd-leg"></legend><div class="vals" id="pd-vals"></div></fieldset><button class="confirm" id="pd-add" style="margin-top:16px">Add to bag</button></dialog>
@@ -248,6 +271,7 @@ sw:{n:'Sweatshirt',v:'Nike',p:199,i:'source-sweatshirt',h:581,u:'sweatshirt',L:'
 sp:{n:'Sweatshirt Plus',v:'Nike',p:199,i:'source-sweatshirt-plus',h:610,u:'sweatshirt-plus',L:'Size',o:AP,ids:[56836143743281,56836143776049,56836143808817,56836143841585]},
 ho:{n:'Hoodie',v:'Nike',p:199,i:'source-hoodie',h:555,u:'hoodie',L:'Size',o:AP,ids:[56836002185521,56836002218289,56836002251057,56836002283825]},
 hb:{n:'Hoodie Black',v:'Nike',p:199,i:'source-hoodie-black',h:536,u:'hoodie-black',L:'Size',o:AP,ids:[56836251681073,56836251713841,56836251746609,56836251779377]}};
+[['et','Essential Tee',79,'source-tshirt',563,AP,1],['cc','Cream Crew',129,'source-sweatshirt',581,AP,2],['fv','Forest Varsity Hoodie',169,'source-sweatshirt-plus',610,AP,3],['gh','Graphic Hoodie',189,'source-hoodie',555,AP,4],['ms','Midnight Snow Hoodie',189,'source-hoodie-black',536,AP,5],['cs','Court Classic Sneaker',139,'source-tatum-5-orbit',400,SH,6],['nr','Noir Runner',159,'source-air-jordan-12-retro-copy',400,SH,7],['hh','Heritage High',179,'source-tatum-5-orbit-copy',400,SH,8]].forEach(([k,n,p,i,h,o,x])=>{P[k]={n,v:'The Runway',p,i,h,u:'',L:o===SH?'Shoe size':'Size',o,ids:o.map((_,j)=>7000000+x*10+j)}});
 const LOOKS=[
 ['The City Edit',1,1,['ajr','ts','sw'],'bndthK'],['Gallery Opening',5,5,['t5','hb','ts'],'XckgG6',1],['Gallery Opening',4,4,['sp','t5','ts'],'rLfAhC',1],
 ['Studio Day',6,6,['hb','ajr','ts'],'FKg67q'],['Studio Day',3,3,['sw','t5','ts'],'8KREEE'],['Studio Day',2,2,['ho','l5','ts'],'N3bfm9']];
@@ -268,9 +292,9 @@ const Bag={
   const box=$('#bag-items');box.innerHTML='';let tot=0;
   if(!a.length)box.innerHTML='<p class="bn2">Your styling bag is empty. Choose a size beside a piece to save it.</p>';
   a.forEach(e=>{const v=VARS.get(e.id),p=P[v.k];tot+=p.p*e.quantity;const r=document.createElement('div');r.className='brow';
-   r.innerHTML=`<img alt="${p.n}" src="${A+p.i}.webp"><div><h3>${p.n}</h3><p>Size ${v.o} · ${money(p.p)}</p><p><button class="qb" data-q="-1" aria-label="Decrease">−</button> <b>${e.quantity}</b> <button class="qb" data-q="1" aria-label="Increase">+</button></p><a href="${S+p.u}" target="_blank" rel="noopener noreferrer">View piece ↗</a></div><button class="rm" aria-label="Remove ${p.n}">×</button>`;
+   r.innerHTML=`<img alt="${p.n}" src="${A+p.i}.webp"><div><h3>${p.n}</h3><p>Size ${v.o} · ${money(p.p)}</p><p><span class="qty"><button class="qb" data-q="-1" aria-label="Decrease">−</button><b>${e.quantity}</b><button class="qb" data-q="1" aria-label="Increase">+</button></span></p><a href="${S+p.u}" target="_blank" rel="noopener noreferrer">View piece ↗</a></div><button class="rm" aria-label="Remove ${p.n}">×</button>`;
    r.querySelectorAll('.qb').forEach(b=>b.onclick=()=>{const a2=this.load(),x=a2.find(y=>y.id===e.id);x.quantity=Math.min(20,x.quantity+ +b.dataset.q);this.save(a2.filter(y=>y.quantity>0));this.render()});r.querySelector('.rm').onclick=()=>{this.save(this.load().filter(x=>x.id!==e.id));this.render()};box.appendChild(r)});
-  $('#bag-total').textContent=a.length?'Reference subtotal '+money(tot):'';$('#export-bag').disabled=$('#order-bag').disabled=$('#pay-bag').disabled=!a.length}};
+  $('#bag-total').textContent=a.length?'Subtotal '+money(tot):'';$('#export-bag').disabled=$('#order-bag').disabled=$('#pay-bag').disabled=!a.length}};
 let tt;function toast(m){const t=$('#bag-status');t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('on'),2500)}
 $('#open-bag').onclick=()=>{Bag.render();$('#bag-dialog').showModal()};
 $('#close-bag').onclick=()=>$('#bag-dialog').close();
@@ -438,9 +462,9 @@ $('#theme').onclick=()=>dk(!document.documentElement.classList.contains('dark'))
 document.addEventListener('click',e=>{const g=e.target.closest('[data-guide]');if(g){$$('.gt').forEach(t=>t.hidden=t.dataset.t!==g.dataset.guide);$('#size-dialog').showModal()}});
 $('#close-size').onclick=()=>$('#size-dialog').close();
 const io=new IntersectionObserver(en=>en.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.1});const reveal=()=>$$('.rv:not(.in)').forEach(e=>io.observe(e));
-const CAT={ajr:'Sneakers',t5:'Sneakers',l5:'Sneakers',ts:'Tees',sw:'Sweatshirts',sp:'Sweatshirts',ho:'Hoodies',hb:'Hoodies'};let fcat='All',fsort='';
+const CAT={ajr:'Sneakers',t5:'Sneakers',l5:'Sneakers',ts:'Tees',sw:'Sweatshirts',sp:'Sweatshirts',ho:'Hoodies',hb:'Hoodies',et:'Tees',cc:'Sweatshirts',fv:'Hoodies',gh:'Hoodies',ms:'Hoodies',cs:'Sneakers',nr:'Sneakers',hh:'Sneakers'};let fcat='All',fsort='';
 const drawShop=()=>{setTimeout(reveal);const ks=Object.keys(P).filter(k=>fcat==='All'||CAT[k]===fcat);if(fsort)ks.sort((a,b)=>fsort==='lo'?P[a].p-P[b].p:P[b].p-P[a].p);
- $('#shopgrid').innerHTML=ks.map((k,i)=>`<button class="pc rv" style="transition-delay:${i*60}ms" data-prod="${k}"><span class="pim"><img src="${A+P[k].i}.webp" alt="" loading="lazy"></span><span class="pn">${P[k].n}</span><span class="pp">${money(P[k].p)}</span></button>`).join('');
+ $('#shopgrid').innerHTML=ks.map((k,i)=>`<button class="pc rv" style="transition-delay:${i*60}ms" data-prod="${k}"><span class="pim"><img src="${A+P[k].i}.webp" alt="" loading="lazy"></span><span class="pt">${CAT[k]}</span><span class="pn">${P[k].n}</span><span class="pp">${money(P[k].p)}</span></button>`).join('');
  $('#chips').innerHTML=['All',...new Set(Object.values(CAT))].map(c=>`<button class="chip" aria-pressed="${c===fcat}" data-cat="${c}">${c}</button>`).join('')};
 drawShop();
 $('#sort').onchange=e=>{fsort=e.target.value;drawShop()};
