@@ -271,10 +271,10 @@ sw:{n:'Sweatshirt',v:'Nike',p:199,i:'source-sweatshirt',h:581,u:'sweatshirt',L:'
 sp:{n:'Sweatshirt Plus',v:'Nike',p:199,i:'source-sweatshirt-plus',h:610,u:'sweatshirt-plus',L:'Size',o:AP,ids:[56836143743281,56836143776049,56836143808817,56836143841585]},
 ho:{n:'Hoodie',v:'Nike',p:199,i:'source-hoodie',h:555,u:'hoodie',L:'Size',o:AP,ids:[56836002185521,56836002218289,56836002251057,56836002283825]},
 hb:{n:'Hoodie Black',v:'Nike',p:199,i:'source-hoodie-black',h:536,u:'hoodie-black',L:'Size',o:AP,ids:[56836251681073,56836251713841,56836251746609,56836251779377]}};
-[['et','Essential Tee',79,'source-tshirt',563,AP,1],['cc','Cream Crew',129,'source-sweatshirt',581,AP,2],['fv','Forest Varsity Hoodie',169,'source-sweatshirt-plus',610,AP,3],['gh','Graphic Hoodie',189,'source-hoodie',555,AP,4],['ms','Midnight Snow Hoodie',189,'source-hoodie-black',536,AP,5],['cs','Court Classic Sneaker',139,'source-tatum-5-orbit',400,SH,6],['nr','Noir Runner',159,'source-air-jordan-12-retro-copy',400,SH,7],['hh','Heritage High',179,'source-tatum-5-orbit-copy',400,SH,8]].forEach(([k,n,p,i,h,o,x])=>{P[k]={n,v:'The Runway',p,i,h,u:'',L:o===SH?'Shoe size':'Size',o,ids:o.map((_,j)=>7000000+x*10+j)}});
+[['et','Essential Tee',79,'source-tshirt',563,AP,1],['cc','Cream Crew',129,'source-sweatshirt',581,AP,2],['fv','Forest Varsity Hoodie',169,'source-sweatshirt-plus',610,AP,3],['gh','Graphic Hoodie',189,'source-hoodie',555,AP,4],['ms','Midnight Snow Hoodie',189,'source-hoodie-black',536,AP,5],['cs','Court Classic Sneaker',139,'source-tatum-5-orbit',400,SH,6],['nr','Noir Runner',159,'source-air-jordan-12-retro-copy',400,SH,7],['hh','Heritage High',179,'source-tatum-5-orbit-copy',400,SH,8]].slice(0,0).forEach(([k,n,p,i,h,o,x])=>{P[k]={n,v:'The Runway',p,i,h,u:'',L:o===SH?'Shoe size':'Size',o,ids:o.map((_,j)=>7000000+x*10+j)}});
 const LOOKS=[
 ['The City Edit',1,1,['ajr','ts','sw'],'bndthK'],['Gallery Opening',5,5,['t5','hb','ts'],'XckgG6',1],['Gallery Opening',4,4,['sp','t5','ts'],'rLfAhC',1],
-['Studio Day',6,6,['hb','ajr','ts'],'FKg67q'],['Studio Day',3,3,['sw','t5','ts'],'8KREEE'],['Studio Day',2,2,['ho','l5','ts'],'N3bfm9']];
+['Studio Day',6,6,['ts','t5','hb'],'FKg67q'],['Studio Day',3,3,['sw','l5','ts'],'8KREEE'],['Studio Day',2,2,['sw','t5','ts'],'N3bfm9']];
 const N=6,NB=12,STEP=Math.PI*2/NB,K=95,C=2*Math.sqrt(K);
 const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
 const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
@@ -382,11 +382,11 @@ connectedCallback(){
  const moveTo=T=>{target=T;setIndex(((T%N)+N)%N);kick()};
  const next=()=>moveTo(Math.round(target)+1),prev=()=>moveTo(Math.round(target)-1);
  const lb=$('[data-lb]',self),lbs=$('[data-lbs]',self);let lt,at='';
- const PP=i=>i?[[50,28],[48,58],[45,88]]:[[47,27],[48,58],[45,96]];
+ const ZP=(k,li)=>{if(['ajr','t5','l5'].includes(k))return[46,95];if(k==='ts')return LOOKS[li][3].some(x=>['sw','sp','ho','hb'].includes(x))?[50,21]:[50,30];return[50,31]};
  const openLb=()=>{engage();clearTimeout(lt);const li=index,src=bs.find((b,a)=>+b.dataset.i===li&&rank(a)===0)||bs[li],sf=$('.fig',src);
   lbs.innerHTML='';const m=document.createElement('div');m.className='lbm';m.appendChild(sf.previousElementSibling.cloneNode(true));
   const f=sf.cloneNode(true);$('.hit',f).remove();$$('img',f).forEach(i=>i.loading='eager');
-  LOOKS[li][3].forEach((k,j)=>{const b=document.createElement('button');b.className='pin';b.dataset.pin=j+1;b.dataset.tip=P[k].n;b.style.cssText=`left:${PP(li)[j][0]}%;top:${PP(li)[j][1]}%;--pi:${j+1}`;b.setAttribute('aria-label',`${j+1}: ${P[k].n}`);b.innerHTML=`<span class="pd">${j+1}</span>`;f.appendChild(b)});
+  LOOKS[li][3].forEach((k,j)=>{const b=document.createElement('button');b.className='pin';b.dataset.pin=j+1;b.dataset.tip=P[k].n;b.style.cssText=`left:${ZP(k,li)[0]}%;top:${ZP(k,li)[1]}%;--pi:${j+1}`;b.setAttribute('aria-label',`${j+1}: ${P[k].n}`);b.innerHTML=`<span class="pd">${j+1}</span>`;f.appendChild(b)});
   m.appendChild(f);lbs.appendChild(m);$('[data-lbk]',self).textContent='Look 0'+(li+1);$('[data-lbn]',self).textContent=LOOKS[li][0];
   self.classList.add('zoom');lb.setAttribute('aria-hidden','false');
   m.style.setProperty('--mh',Math.max(160,Math.min(lbs.clientHeight,lbs.clientWidth/.5625))+'px');
