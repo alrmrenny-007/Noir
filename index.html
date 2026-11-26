@@ -186,6 +186,20 @@ html.dark{filter:invert(1) hue-rotate(180deg)}html.dark img,html.dark .wa{filter
 .pc{display:flex;flex-direction:column;gap:6px;text-align:left}.pim{display:block;aspect-ratio:4/5;background:color-mix(in srgb,#151413 5%,#fff);overflow:hidden}.pim img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}.pc:hover .pim img{transform:scale(1.06)}.pn{font-size:13px;font-weight:500;margin-top:6px}.pp{font-size:12px;color:var(--muted)}
 .qb{width:32px;height:32px;border:1px solid #ccc;border-radius:50%}
 @media(max-width:749px){.shop{padding:40px 20px}.sg2{grid-template-columns:repeat(2,1fr);gap:20px 12px}.shh h2{width:100%}}
+:root{--acc:#ff3d2e}html{overflow-x:hidden}.site-header,nav{min-width:0}
+.stage:before{content:"";position:absolute;inset:-20%;background:radial-gradient(40% 35% at 25% 70%,rgb(255 120 90/.16),transparent 70%),radial-gradient(35% 30% at 75% 60%,rgb(90 140 255/.14),transparent 70%),radial-gradient(30% 30% at 50% 30%,rgb(255 214 90/.14),transparent 70%);animation:drift 14s ease-in-out infinite alternate;pointer-events:none}
+@keyframes drift{to{transform:translate3d(6%,-4%,0) scale(1.12)}}
+.mq{overflow:hidden;background:#151413;color:#fff;font-size:11px;letter-spacing:.18em;text-transform:uppercase;white-space:nowrap;padding:12px 0}.mq div{display:inline-block;padding-left:100%;animation:mq 30s linear infinite}@keyframes mq{to{transform:translateX(-100%)}}
+.chip,.add,.heart,.pc,.confirm,#pay-bag,#order-bag,#export-bag,.tick,.share,.qb{transition:transform .3s cubic-bezier(.2,1.6,.4,1),background .3s,color .3s,border-color .3s}
+.chip:active,.add:active,.heart:active,.pc:active,.confirm:active,#pay-bag:active,#order-bag:active,#export-bag:active,.qb:active{transform:scale(.94)}
+.chip:hover{transform:translateY(-2px);border-color:#151413}.pc:hover{transform:translateY(-6px)}.pill:hover span{transform:translateY(-2px)}.qb:hover{background:#151413;color:#fff}
+#pay-bag:hover,#order-bag:hover,#export-bag:hover{transform:translateY(-2px)}
+.item{transition:background .4s}.item:hover{background:color-mix(in srgb,#151413 3%,#fff)}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform 1s var(--ease)}.rv.in{opacity:1;transform:none}
+[data-cart-count]{display:inline-block}.bump{animation:bump .6s cubic-bezier(.2,1.6,.4,1)}@keyframes bump{40%{transform:scale(1.6);color:var(--acc)}}
+.tick[aria-current=true] .bar:after{background:var(--acc)}
+.lotw{flex-wrap:wrap;text-align:center}
+@media(max-width:749px){.site-header{padding:0 14px;gap:8px}nav{gap:10px}nav a:first-child{display:none}.wm{font-size:13px}.mark{width:22px}#theme,#open-bag{min-width:36px}}
 @media(max-width:1099px){.grid{grid-template-columns:minmax(0,1fr) 340px}}
 @media(max-width:749px){
 .site-header{height:68px;padding:0 20px;gap:18px}.mark{width:26px;height:23px}.wm{font-size:14px}nav{gap:14px;font-size:11px}nav a{padding:15px 0}nav a.x{display:none}
@@ -211,8 +225,9 @@ html.dark{filter:invert(1) hue-rotate(180deg)}html.dark img,html.dark .wa{filter
 </header>
 <div id="lotw" class="lotw" hidden></div>
 <main><runway-section id="Runway-template--28035983671601__the_runway_wdM8BG" class="rw" data-speed="5000"></runway-section>
-<section class="shop" id="shop"><div class="shh"><h2>Shop all</h2><div class="chips" id="chips"></div><select id="sort" aria-label="Sort"><option value="">Featured</option><option value="lo">Price: low to high</option><option value="hi">Price: high to low</option></select></div><div class="sg2" id="shopgrid"></div></section></main>
-<footer class="foot"><b>The Runway</b><span>Six looks, styled head to toe. Explore the runway, save your favourites and order in a message.</span><span id="foot-links"></span><span>© 2026 The Runway</span></footer>
+<div class="mq" aria-hidden="true"><div>The Runway ✦ Six looks ✦ Styled head to toe ✦ Tap a pin ✦ Shop the look ✦ The Runway ✦ Six looks ✦ Styled head to toe ✦ Tap a pin ✦ Shop the look</div></div>
+<section class="shop" id="shop"><div class="shh rv"><h2>Shop all</h2><div class="chips" id="chips"></div><select id="sort" aria-label="Sort"><option value="">Featured</option><option value="lo">Price: low to high</option><option value="hi">Price: high to low</option></select></div><div class="sg2" id="shopgrid"></div></section></main>
+<footer class="foot rv"><b>The Runway</b><span>Six looks, styled head to toe. Explore the runway, save your favourites and order in a message.</span><span id="foot-links"></span><span>© 2026 The Runway</span></footer>
 <a class="wa" href="#" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24" width="26" height="26" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 2a8 8 0 1 1-4.2 14.8l-.3-.2-2.4.6.7-2.3-.2-.3A8 8 0 0 1 12 4z"/></svg></a>
 <dialog id="bag-dialog"><div class="bh"><h2>Your styling bag</h2><button id="close-bag" aria-label="Close styling bag">×</button></div>
 <p class="bn2">A local outfit shortlist. No payment or order is collected here.</p>
@@ -249,7 +264,7 @@ const Bag={
  save(a){try{localStorage.setItem(KEY,JSON.stringify(a))}catch(e){}},
  add(items){const a=this.load();for(const it of items){if(!VARS.has(it.id))throw new Error('Please choose an available size.');const e=a.find(x=>x.id===it.id);if(e)e.quantity=Math.min(20,e.quantity+1);else a.push({id:it.id,quantity:1})}
   this.save(a);this.render();toast(items.length>1?'Look saved to your styling bag':'Piece saved to your styling bag')},
- render(){const a=this.load();$$('[data-cart-count]').forEach(e=>e.textContent=a.reduce((s,x)=>s+x.quantity,0));
+ render(){const a=this.load();$$('[data-cart-count]').forEach(e=>{const n=a.reduce((s,x)=>s+x.quantity,0);if(e.textContent!=n){e.classList.remove('bump');void e.offsetWidth;e.classList.add('bump')}e.textContent=n});
   const box=$('#bag-items');box.innerHTML='';let tot=0;
   if(!a.length)box.innerHTML='<p class="bn2">Your styling bag is empty. Choose a size beside a piece to save it.</p>';
   a.forEach(e=>{const v=VARS.get(e.id),p=P[v.k];tot+=p.p*e.quantity;const r=document.createElement('div');r.className='brow';
@@ -280,7 +295,7 @@ connectedCallback(){
  document.documentElement.classList.add('js');
  const arrowL='<svg width="26" height="14" viewBox="0 0 26 14" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M25 7H1M7 1L1 7l6 6"/></svg>',
  arrowR='<svg width="26" height="14" viewBox="0 0 26 14" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M1 7h24M19 1l6 6-6 6"/></svg>';
- const img=(l,lazy)=>`<img src="${A}model-${l[1]}-640.webp" srcset="${A}model-${l[1]}-640.webp 640w, ${A}original-look-${l[2]}.webp 1080w" sizes="(min-width: 1800px) 540px, (min-width: 750px) 420px, 320px" loading="${lazy?'lazy':'eager'}" decoding="async" width="1100" height="1956" draggable="false" alt="${l[0]}" data-model-image>`;
+ const img=(l,lazy)=>`<img src="${A}model-${l[1]}-640.webp" srcset="${A}model-${l[1]}-640.webp 640w, ${A}original-look-${l[2]}.webp 1080w" sizes="(min-width: 750px) 540px, 480px" loading="${lazy?'lazy':'eager'}" decoding="async" width="1100" height="1956" draggable="false" alt="${l[0]}" data-model-image>`;
  const body=(l,i,lazy)=>`<div class="body" data-i="${i%N}" aria-hidden="true"><span class="shadow"></span><div class="fig"><div style="position:absolute;inset:0" class="art">${img(l,lazy)}<button class="hit" data-go="${i%N}" aria-label="Look ${i%N+1}: ${l[0]}" tabindex="-1"></button></div></div></div>`;
  let bodies='';for(let a=0;a<NB;a++)bodies+=body(LOOKS[a%N],a,a>=N);
  const rows=(l,li)=>l[3].map((k,j)=>{const p=P[k],n=j+1,pid=`Picker-template--28035983671601__the_runway_wdM8BG-look_${l[4]}-${n}`;
@@ -316,12 +331,12 @@ connectedCallback(){
   if(!mob){const cx=.5*W,R=.62*W,Pp=1.65*W,floor=H-34,hz=.36*H,fs=1.08;
    bs.forEach((b,a)=>{const phi=wrap((a-cur)*STEP),z=R*(1-Math.cos(phi)),ps=Pp/(Pp+z),sl=Math.abs(phi)/STEP,
     sc=ps*(1+(fs-1)*Math.max(0,Math.min(1,1-sl))),x=cx+R*Math.sin(phi)*ps,feet=hz+(floor-hz)*ps,
-    bl=sl<=1?1.8*sl:Math.min(1.8+(sl-1)*2,6.5),op=Math.max(0,Math.min(1,(Math.cos(phi)+.55)/.3));
+    bl=Math.min(.5*sl,1.6),op=Math.max(0,Math.min(1,(Math.cos(phi)+.55)/.3));
     put(b,x,H-feet,sc,op,bl,Math.round(sc*1000))})}
   else{const ax=.3,ay=22,sx=.32,sy=22,sr=.76;
    bs.forEach((b,a)=>{let k=((a-cur)%NB+NB)%NB;if(k>NB-1.4)k-=NB;
-    if(k<0){const e=Math.min(-k,1.4);put(b,W*(ax-.55*e),ay-22*e,1+.14*e,Math.max(0,1-1.05*e),4*Math.min(e,1),1100)}
-    else{const op=k<=3?1-.13*k:Math.max(0,.61*(4-k));put(b,W*(ax+sx*k),ay+sy*k,Math.pow(sr,k),op,Math.min(.9*k,3.2),1000-Math.round(10*k))}})}};
+    if(k<0){const e=Math.min(-k,1.4);put(b,W*(ax-.55*e),ay-22*e,1+.14*e,Math.max(0,1-1.05*e),1.5*Math.min(e,1),1100)}
+    else{const op=k<=3?1-.13*k:Math.max(0,.61*(4-k));put(b,W*(ax+sx*k),ay+sy*k,Math.pow(sr,k),op,Math.min(.3*k,1),1000-Math.round(10*k))}})}};
  let last=0;
  const frame=t=>{raf=0;if(!vis||document.hidden)return;const dt=Math.min(.034,last?(t-last)/1000:1/60);last=t;
   if(reduce){cur=target;vel=0}else{const h=dt/3;for(let i=0;i<3;i++){const acc=-K*(cur-target)-C*vel;vel+=acc*h;cur+=vel*h}}
@@ -422,9 +437,10 @@ try{if(localStorage.getItem('runway-dark')==='1')dk(true)}catch(e){}
 $('#theme').onclick=()=>dk(!document.documentElement.classList.contains('dark'));
 document.addEventListener('click',e=>{const g=e.target.closest('[data-guide]');if(g){$$('.gt').forEach(t=>t.hidden=t.dataset.t!==g.dataset.guide);$('#size-dialog').showModal()}});
 $('#close-size').onclick=()=>$('#size-dialog').close();
+const io=new IntersectionObserver(en=>en.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.1});const reveal=()=>$$('.rv:not(.in)').forEach(e=>io.observe(e));
 const CAT={ajr:'Sneakers',t5:'Sneakers',l5:'Sneakers',ts:'Tees',sw:'Sweatshirts',sp:'Sweatshirts',ho:'Hoodies',hb:'Hoodies'};let fcat='All',fsort='';
-const drawShop=()=>{const ks=Object.keys(P).filter(k=>fcat==='All'||CAT[k]===fcat);if(fsort)ks.sort((a,b)=>fsort==='lo'?P[a].p-P[b].p:P[b].p-P[a].p);
- $('#shopgrid').innerHTML=ks.map(k=>`<button class="pc" data-prod="${k}"><span class="pim"><img src="${A+P[k].i}.webp" alt="" loading="lazy"></span><span class="pn">${P[k].n}</span><span class="pp">${money(P[k].p)}</span></button>`).join('');
+const drawShop=()=>{setTimeout(reveal);const ks=Object.keys(P).filter(k=>fcat==='All'||CAT[k]===fcat);if(fsort)ks.sort((a,b)=>fsort==='lo'?P[a].p-P[b].p:P[b].p-P[a].p);
+ $('#shopgrid').innerHTML=ks.map((k,i)=>`<button class="pc rv" style="transition-delay:${i*60}ms" data-prod="${k}"><span class="pim"><img src="${A+P[k].i}.webp" alt="" loading="lazy"></span><span class="pn">${P[k].n}</span><span class="pp">${money(P[k].p)}</span></button>`).join('');
  $('#chips').innerHTML=['All',...new Set(Object.values(CAT))].map(c=>`<button class="chip" aria-pressed="${c===fcat}" data-cat="${c}">${c}</button>`).join('')};
 drawShop();
 $('#sort').onchange=e=>{fsort=e.target.value;drawShop()};
