@@ -169,6 +169,23 @@ dialog::backdrop{background:#0005;backdrop-filter:blur(4px)}
 .pcl{display:block;position:absolute;top:8px;right:12px;width:44px;height:44px;font-size:24px}
 .item.pick .picker{position:fixed;left:0;right:0;bottom:0;width:auto;z-index:2147483001;max-height:min(82vh,640px);overflow:auto;gap:18px;padding:30px 20px calc(20px + env(safe-area-inset-bottom));background:#fff;border-radius:20px 20px 0 0;box-shadow:0 0 0 100vmax rgb(12 10 8/.38);animation:sheet .65s cubic-bezier(.32,.72,0,1)}}
 @keyframes sheet{from{transform:translateY(100%)}}
+#theme{min-width:44px;min-height:44px;font-size:20px}
+.heart{align-self:flex-start;font-size:18px;line-height:1;padding:6px 0;transition:transform .45s cubic-bezier(.2,1.6,.4,1)}.heart:active{transform:scale(1.3)}.heart[aria-pressed=true]{color:#c0392b}
+.sg{font-size:10px;text-decoration:underline;text-underline-offset:3px;margin-left:8px;color:var(--muted)}
+.share{font-size:11px;letter-spacing:.08em;text-decoration:underline;text-underline-offset:4px;align-self:center;padding:8px}
+.lotw{display:flex;justify-content:center;gap:10px;align-items:center;min-height:36px;padding:0 16px;background:#151413;color:#fff;font-size:11px;letter-spacing:.06em}.lotw button{text-decoration:underline;text-underline-offset:3px;color:#fff;font-size:11px;padding:10px 0}
+.foot{padding:48px 40px 40px;border-top:1px solid #e4e4e4;display:grid;gap:12px;font-size:12px;line-height:1.6;color:var(--muted)}.foot b{color:var(--ink);font-size:15px;font-weight:600}.foot a{text-decoration:underline;text-underline-offset:3px;margin-right:14px}
+.wa{position:fixed;right:16px;bottom:20px;width:54px;height:54px;border-radius:50%;background:#25D366;display:grid;place-items:center;z-index:60;box-shadow:0 8px 24px -8px rgb(0 0 0/.5)}
+html.dark{filter:invert(1) hue-rotate(180deg)}html.dark img,html.dark .wa{filter:invert(1) hue-rotate(180deg)}
+.gt{width:100%;border-collapse:collapse;font-size:12px;margin-top:12px}.gt th,.gt td{padding:8px;border-bottom:1px solid #ddd;text-align:left}
+@media(max-width:749px){.foot{padding:32px 20px 90px}.lotw{font-size:10px}}
+.shop{padding:56px 40px;border-top:1px solid #e4e4e4}.shh{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-bottom:28px}.shh h2{margin:0 auto 0 0;font-weight:400;font-size:30px;letter-spacing:-.02em}
+.chips{display:flex;flex-wrap:wrap;gap:8px}.chip{padding:10px 16px;border:1px solid var(--line);border-radius:30px;font-size:11px}.chip[aria-pressed=true]{background:#151413;color:#fff;border-color:#151413}
+#sort{padding:10px;border:1px solid var(--line);font-size:12px;background:#fff}
+.sg2{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:24px 20px}
+.pc{display:flex;flex-direction:column;gap:6px;text-align:left}.pim{display:block;aspect-ratio:4/5;background:color-mix(in srgb,#151413 5%,#fff);overflow:hidden}.pim img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}.pc:hover .pim img{transform:scale(1.06)}.pn{font-size:13px;font-weight:500;margin-top:6px}.pp{font-size:12px;color:var(--muted)}
+.qb{width:32px;height:32px;border:1px solid #ccc;border-radius:50%}
+@media(max-width:749px){.shop{padding:40px 20px}.sg2{grid-template-columns:repeat(2,1fr);gap:20px 12px}.shh h2{width:100%}}
 @media(max-width:1099px){.grid{grid-template-columns:minmax(0,1fr) 340px}}
 @media(max-width:749px){
 .site-header{height:68px;padding:0 20px;gap:18px}.mark{width:26px;height:23px}.wm{font-size:14px}nav{gap:14px;font-size:11px}nav a{padding:15px 0}nav a.x{display:none}
@@ -189,14 +206,20 @@ dialog::backdrop{background:#0005;backdrop-filter:blur(4px)}
 <body>
 <header class="site-header shopify-section-group-header-group">
 <a href="./" class="brand" aria-label="The Runway home"><svg class="mark" width="34" height="30" viewBox="0 0 34 30" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 28M22 2l9 26"/><path d="M17 5v3M17 12v4M17 20v6"/><path d="M1 21q16-9 32 0"/></svg><span class="wm">The Runway</span></a>
-<nav aria-label="Main navigation"><a href="./">Home</a><a href="./" aria-current="page">Runway</a><a href="#join" id="open-join">Join</a></nav>
-<button id="open-bag" aria-label="Open styling bag"><svg width="22" height="24" viewBox="0 0 24 26" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 8h16l1 16H3L4 8zM8 8V6a4 4 0 0 1 8 0v2"/></svg><span data-cart-count>0</span></button>
+<nav aria-label="Main navigation"><a href="./">Home</a><a href="./" aria-current="page">Runway</a><a href="#shop">Shop</a><a href="#join" id="open-join">Join</a></nav>
+<button id="theme" aria-label="Toggle dark mode">◐</button><button id="open-bag" aria-label="Open styling bag"><svg width="22" height="24" viewBox="0 0 24 26" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 8h16l1 16H3L4 8zM8 8V6a4 4 0 0 1 8 0v2"/></svg><span data-cart-count>0</span></button>
 </header>
-<main><runway-section id="Runway-template--28035983671601__the_runway_wdM8BG" class="rw" data-speed="5000"></runway-section></main>
+<div id="lotw" class="lotw" hidden></div>
+<main><runway-section id="Runway-template--28035983671601__the_runway_wdM8BG" class="rw" data-speed="5000"></runway-section>
+<section class="shop" id="shop"><div class="shh"><h2>Shop all</h2><div class="chips" id="chips"></div><select id="sort" aria-label="Sort"><option value="">Featured</option><option value="lo">Price: low to high</option><option value="hi">Price: high to low</option></select></div><div class="sg2" id="shopgrid"></div></section></main>
+<footer class="foot"><b>The Runway</b><span>Six looks, styled head to toe. Explore the runway, save your favourites and order in a message.</span><span id="foot-links"></span><span>© 2026 The Runway</span></footer>
+<a class="wa" href="#" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24" width="26" height="26" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 2a8 8 0 1 1-4.2 14.8l-.3-.2-2.4.6.7-2.3-.2-.3A8 8 0 0 1 12 4z"/></svg></a>
 <dialog id="bag-dialog"><div class="bh"><h2>Your styling bag</h2><button id="close-bag" aria-label="Close styling bag">×</button></div>
 <p class="bn2">A local outfit shortlist. No payment or order is collected here.</p>
-<div id="bag-items"></div><p id="bag-total"></p><button id="order-bag">Order on WhatsApp</button><button id="export-bag">Download outfit shortlist</button></dialog>
+<div id="bag-items"></div><p id="bag-total"></p><form id="co" class="jf"><input name="name" placeholder="Full name" required><input name="phone" placeholder="Phone number" required><input name="addr" placeholder="Delivery address" required></form><button id="order-bag">Place order on WhatsApp</button><button id="export-bag">Download outfit shortlist</button></dialog>
 <dialog id="join-dialog"><div class="bh"><h2>Join The Runway</h2><button id="close-join" aria-label="Close" style="font-size:28px;width:44px;height:44px">×</button></div><p class="bn2">Want to be featured? Tell us about you and we'll get back to you.</p><form class="jf" id="join-form"><input name="name" placeholder="Your name" required><input name="city" placeholder="City"><input name="handle" placeholder="Instagram handle"><textarea name="about" rows="3" placeholder="Tell us about your style"></textarea><button type="submit">Send</button></form></dialog>
+<dialog id="prod-dialog"><div class="bh"><h2 id="pd-name"></h2><button id="close-prod" aria-label="Close" style="font-size:28px;width:44px;height:44px">×</button></div><img id="pd-img" alt="" style="width:100%;max-height:50vh;object-fit:contain;background:#f6f6f4;margin:12px 0"><p id="pd-price" style="margin:0 0 4px;font-size:16px"></p><p class="bn2" id="pd-desc"></p><fieldset><legend id="pd-leg"></legend><div class="vals" id="pd-vals"></div></fieldset><button class="confirm" id="pd-add" style="margin-top:16px">Add to bag</button></dialog>
+<dialog id="size-dialog"><div class="bh"><h2>Size guide</h2><button id="close-size" aria-label="Close" style="font-size:28px;width:44px;height:44px">×</button></div><table class="gt" data-t="shoe"><tr><th>EU</th><th>US</th><th>UK</th></tr><tr><td>40</td><td>7</td><td>6</td></tr><tr><td>41</td><td>8</td><td>7</td></tr><tr><td>42</td><td>9</td><td>8</td></tr><tr><td>43</td><td>10</td><td>9</td></tr><tr><td>44</td><td>10.5</td><td>9.5</td></tr><tr><td>45</td><td>11</td><td>10.5</td></tr><tr><td>46</td><td>12</td><td>11</td></tr></table><table class="gt" data-t="top" hidden><tr><th>Size</th><th>Chest (in)</th></tr><tr><td>S</td><td>36–38</td></tr><tr><td>M</td><td>38–40</td></tr><tr><td>L</td><td>40–42</td></tr><tr><td>XL</td><td>42–44</td></tr></table><p class="bn2">Approximate sizes. Not sure? Message us on WhatsApp.</p></dialog>
 <div id="bag-status" role="status" aria-live="polite"></div>
 <script>
 const A='https://reel-ref-try-the-look.vercel.app/assets/',S='#';
@@ -229,15 +252,15 @@ const Bag={
   const box=$('#bag-items');box.innerHTML='';let tot=0;
   if(!a.length)box.innerHTML='<p class="bn2">Your styling bag is empty. Choose a size beside a piece to save it.</p>';
   a.forEach(e=>{const v=VARS.get(e.id),p=P[v.k];tot+=p.p*e.quantity;const r=document.createElement('div');r.className='brow';
-   r.innerHTML=`<img alt="${p.n}" src="${A+p.i}.webp"><div><h3>${p.n}</h3><p>Size ${v.o} · Quantity ${e.quantity} · ${money(p.p)}</p><a href="${S+p.u}" target="_blank" rel="noopener noreferrer">View piece ↗</a></div><button aria-label="Remove ${p.n}">×</button>`;
-   r.querySelector('button').onclick=()=>{this.save(this.load().filter(x=>x.id!==e.id));this.render()};box.appendChild(r)});
+   r.innerHTML=`<img alt="${p.n}" src="${A+p.i}.webp"><div><h3>${p.n}</h3><p>Size ${v.o} · ${money(p.p)}</p><p><button class="qb" data-q="-1" aria-label="Decrease">−</button> <b>${e.quantity}</b> <button class="qb" data-q="1" aria-label="Increase">+</button></p><a href="${S+p.u}" target="_blank" rel="noopener noreferrer">View piece ↗</a></div><button class="rm" aria-label="Remove ${p.n}">×</button>`;
+   r.querySelectorAll('.qb').forEach(b=>b.onclick=()=>{const a2=this.load(),x=a2.find(y=>y.id===e.id);x.quantity=Math.min(20,x.quantity+ +b.dataset.q);this.save(a2.filter(y=>y.quantity>0));this.render()});r.querySelector('.rm').onclick=()=>{this.save(this.load().filter(x=>x.id!==e.id));this.render()};box.appendChild(r)});
   $('#bag-total').textContent=a.length?'Reference subtotal '+money(tot):'';$('#export-bag').disabled=$('#order-bag').disabled=!a.length}};
 let tt;function toast(m){const t=$('#bag-status');t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('on'),2500)}
 $('#open-bag').onclick=()=>{Bag.render();$('#bag-dialog').showModal()};
 $('#close-bag').onclick=()=>$('#bag-dialog').close();
-const CONTACT={wa:'',email:'hello@example.com'}; /* put your WhatsApp number (digits only, with country code) in wa, e.g. '2348012345678', and your email in email */
+const CONTACT={wa:'2349150583674',email:'cooperleonard60@gmail.com'}; /* put your WhatsApp number (digits only, with country code) in wa, e.g. '2348012345678', and your email in email */
 const send=(subj,text)=>{if(CONTACT.wa)window.open(`https://wa.me/${CONTACT.wa}?text=${encodeURIComponent(text)}`,'_blank','noopener');else location.href=`mailto:${CONTACT.email}?subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(text)}`};
-$('#order-bag').onclick=()=>{const a=Bag.load();let t=0;const l=a.map(e=>{const v=VARS.get(e.id),p=P[v.k];t+=p.p*e.quantity;return`${p.n} · Size ${v.o} · Qty ${e.quantity} · ${money(p.p)}`});send('The Runway order',`Hi, I'd like to order:\n\n${l.join('\n')}\n\nSubtotal ${money(t)}`)};
+$('#order-bag').onclick=()=>{const fm=$('#co');if(!fm.reportValidity())return;const fd=new FormData(fm),who=`Name: ${fd.get('name')}\nPhone: ${fd.get('phone')}\nAddress: ${fd.get('addr')}`;const a=Bag.load();let t=0;const l=a.map(e=>{const v=VARS.get(e.id),p=P[v.k];t+=p.p*e.quantity;return`${p.n} · Size ${v.o} · Qty ${e.quantity} · ${money(p.p)}`});send('The Runway order',`Hi, I'd like to order:\n\n${l.join('\n')}\n\nSubtotal ${money(t)}\n\n${who}`)};
 $('#open-join').onclick=e=>{e.preventDefault();$('#join-dialog').showModal()};
 $('#close-join').onclick=()=>$('#join-dialog').close();
 $('#join-form').onsubmit=e=>{e.preventDefault();const f=new FormData(e.target);send('Join The Runway',`Name: ${f.get('name')}\nCity: ${f.get('city')}\nInstagram: ${f.get('handle')}\nAbout me: ${f.get('about')}`);$('#join-dialog').close();toast('Thanks! Your message is ready to send')};
@@ -246,6 +269,9 @@ $('#export-bag').onclick=()=>{const lines=Bag.load().map(e=>{const v=VARS.get(e.
  const b=new Blob(['RUNWAY — STYLING SHORTLIST\n\nReference prices; no order or payment has been placed.\n\n\n'+lines.join('\n\n')],{type:'text/plain;charset=utf-8'});
  const u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download='runway-outfit-shortlist.txt';a.click();setTimeout(()=>URL.revokeObjectURL(u),1000)};
 /* ---------- section ---------- */
+const wish=()=>{try{return JSON.parse(localStorage.getItem('runway-wish')||'[]')}catch(e){return[]}};
+const syncHearts=()=>{const w=wish();$$('[data-heart]').forEach(h=>{const on=w.includes(h.dataset.heart);h.setAttribute('aria-pressed',on);h.textContent=on?'♥':'♡'})};
+{const i=Math.floor(Date.now()/604800000)%6,b=$('#lotw');b.hidden=false;b.innerHTML=`<span>Look of the week: ${LOOKS[i][0]} · 0${i+1}</span><button>View</button>`;b.querySelector('button').onclick=()=>document.querySelector('runway-section').goTo(i)}
 customElements.define('runway-section',class extends HTMLElement{
 connectedCallback(){
  document.documentElement.classList.add('js');
@@ -257,12 +283,12 @@ connectedCallback(){
  const rows=(l,li)=>l[3].map((k,j)=>{const p=P[k],n=j+1,pid=`Picker-template--28035983671601__the_runway_wdM8BG-look_${l[4]}-${n}`;
   return`<li class="item" data-card="${n}" style="--i:${n}">${l[5]&&j===(li===1?1:1)?'<span class="tag"><span>New</span></span>':''}
 <a class="media" href="${S+p.u}" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true"><img src="${A+p.i}.webp" loading="lazy" decoding="async" alt="" width="400" height="${p.h}"><span class="num">${n}</span></a>
-<div class="info"><span class="type">The Runway</span><a class="name" href="${S+p.u}" target="_blank" rel="noopener noreferrer">${p.n}</a><span class="price"><span>${money(p.p)}</span></span></div>
+<div class="info"><span class="type">The Runway</span><a class="name" href="${S+p.u}" target="_blank" rel="noopener noreferrer">${p.n}</a><span class="price"><span>${money(p.p)}</span></span><button class="heart" data-heart="${k}" aria-pressed="false" aria-label="Save ${p.n}">♡</button></div>
 <button class="add" data-add="${k}" aria-expanded="false" aria-controls="${pid}" aria-label="Add to bag: ${p.n}"><svg class="pl2" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M12 4v16M4 12h16"/></svg><svg class="ck" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4.5 12.5l5 5L19.5 7"/></svg></button>
-<div class="picker" id="${pid}" hidden><button class="pcl" data-pclose aria-label="Close sizes">×</button><fieldset><legend>${p.L}</legend><div class="vals">${p.o.map((o,x)=>`<label class="pill"><input type="radio" name="Opt-${pid}-1" value="${p.ids[x]}" data-rw-option="0"${x?'':' checked'}><span>${o}</span></label>`).join('')}</div></fieldset>
+<div class="picker" id="${pid}" hidden><button class="pcl" data-pclose aria-label="Close sizes">×</button><fieldset><legend>${p.L} <button type="button" class="sg" data-guide="${p.L=='Size'?'top':'shoe'}">Size guide</button></legend><div class="vals">${p.o.map((o,x)=>`<label class="pill"><input type="radio" name="Opt-${pid}-1" value="${p.ids[x]}" data-rw-option="0"${x?'':' checked'}><span>${o}</span></label>`).join('')}</div></fieldset>
 <button class="confirm" data-confirm><span>Add to bag</span><span class="rw__sr"> — ${p.n}</span></button></div></li>`}).join('');
  const panels=LOOKS.map((l,i)=>`<div class="lp${i?'':' in'}" data-panel="${i}"${i?' hidden':''}><ul class="items" role="list">${rows(l,i)}</ul><div class="bundle"><p class="msg" role="status" aria-live="polite"></p><div class="row"><span><span class="bt">Complete the look</span><span class="bn">Bundle all 3 and save 10%</span></span><span class="bp"><s>$547.00</s><strong>$492.30</strong></span></div>
-<button class="cta" data-all><span class="go">Add full look to bag</span><span class="cm">Add full look — $492.30</span><span class="done">Full look in your bag</span><svg class="go" width="22" height="12" viewBox="0 0 26 14" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M1 7h24M19 1l6 6-6 6"/></svg></button></div></div>`).join('');
+<button class="cta" data-all><span class="go">Add full look to bag</span><span class="cm">Add full look — $492.30</span><span class="done">Full look in your bag</span><svg class="go" width="22" height="12" viewBox="0 0 26 14" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M1 7h24M19 1l6 6-6 6"/></svg></button><button class="share" data-share>Share this look</button></div></div>`).join('');
  const ticks=LOOKS.map((l,i)=>`<button class="tick" data-tick="${i}" aria-current="${i==0}" aria-label="Look ${i+1}: ${l[0]}"><span class="bar"></span><span class="tl">0${i+1}<span class="tn">&nbsp;&nbsp;${l[0]}</span></span></button>`).join('');
  this.innerHTML=`<div class="sticky"><div class="grid"><div class="left"><div class="head"><h2 class="title">Try the Look.</h2><p class="sub">Six looks, styled head to toe. Tap a pin to see the piece.</p><span class="rw__sr" aria-live="polite" aria-atomic="true" data-live></span></div>
 <div class="stage" data-stage tabindex="0" role="region" aria-roledescription="carousel" aria-label="Try the Look. — use arrow keys or swipe to change look"><div data-actors style="position:absolute;inset:0">${bodies}</div><span class="sweep"></span><span class="cur" data-cur><span class="curi"><span class="cl cd">Drag</span><span class="cl cv">View</span></span></span></div>
@@ -274,7 +300,7 @@ connectedCallback(){
  this.style.setProperty('--fh','');
  let index=0,cur=-1.15,target=0,vel=0,W=1,H=1,mob=false,raf=0,playing=false,timer,engaged=false,hover=false,drag=null,vis=true,moved=true;
  const live=$('[data-live]',this),self=this;
- const measure=()=>{const hd=$('.site-header').offsetHeight;mob=innerWidth<750;
+ const measure=()=>{const hd=$('.site-header').offsetHeight+($('#lotw')?$('#lotw').offsetHeight:0);mob=innerWidth<750;
   self.style.setProperty('--fh',mob?Math.round(innerHeight*1.09)+'px':Math.max(380,innerHeight-hd)+'px');
   const r=stage.getBoundingClientRect();W=r.width;H=r.height;
   const fs=mob?1:1.08,mh=mob?Math.max(200,Math.round(H-42)):Math.max(200,Math.round((H-52)/1.08));
@@ -339,6 +365,8 @@ connectedCallback(){
   if(t.closest('[data-lbx]')||t.matches('[data-lbs]'))return closeLb();
   if(c=t.closest('[data-pclose]')){const cd=c.closest('.item');cd.querySelector('.picker').hidden=true;cd.classList.remove('pick');$('.add',cd).setAttribute('aria-expanded',false);return}
   if(c=t.closest('[data-pin]')){$$('.item',self).forEach(x=>x.classList.remove('hot'));const cd=$$('.lp',self)[index].querySelector(`[data-card="${c.dataset.pin}"]`);cd.classList.add('hot');cd.scrollIntoView({behavior:reduce?'auto':'smooth',block:'nearest',inline:'nearest'});return}
+  if(c=t.closest('[data-heart]')){const w=wish(),k=c.dataset.heart,i=w.indexOf(k);i<0?w.push(k):w.splice(i,1);try{localStorage.setItem('runway-wish',JSON.stringify(w))}catch(_){}syncHearts();return}
+  if(c=t.closest('[data-share]')){const tx=`Check out "${LOOKS[index][0]}" on The Runway`,u=location.href.split('#')[0];if(navigator.share)navigator.share({title:'The Runway',text:tx,url:u}).catch(()=>{});else window.open('https://wa.me/?text='+encodeURIComponent(tx+' '+u),'_blank','noopener');return}
   if(t.closest('.panel'))engage();
   if(c=t.closest('[data-next]'))return next();if(c=t.closest('[data-prev]'))return prev();
   if(c=t.closest('[data-tick]'))return go(+c.dataset.tick);
@@ -377,11 +405,27 @@ connectedCallback(){
   stage.addEventListener('pointermove',e=>{if(e.pointerType!=='mouse')return;const r=stage.getBoundingClientRect();tx=e.clientX-r.left;ty=e.clientY-r.top;if(first){cx=tx;cy=ty;first=0}cu.classList.add('on');const dg=!!(drag&&drag.on),h=e.target.closest('.hit');let v=0,l=0;if(h){rank([...bs].indexOf(h.closest('.body')))===0?v=1:l=1}cu.classList.toggle('view',!!v&&!dg);cu.classList.toggle('link',!!l&&!dg);cu.classList.toggle('drag',dg);if(!cr)cr=requestAnimationFrame(lp)});
   stage.addEventListener('pointerleave',()=>{cu.classList.remove('on','link','view');first=1})}
  /* start */
- measure();setIndex(0,true);cur=reduce?0:-1.15;render();kick();
+ self.goTo=go;measure();setIndex(0,true);cur=reduce?0:-1.15;render();kick();
  const reveal=()=>self.classList.add('rev');
  if(reduce){reveal();}else new IntersectionObserver((en,o)=>{if(en[0].isIntersecting){o.disconnect();requestAnimationFrame(()=>requestAnimationFrame(reveal))}},{rootMargin:'0px 0px -22% 0px'}).observe(self);
  if(!reduce)play(true);
 }});
-Bag.render();
+Bag.render();syncHearts();
+const SOC={ig:'',tt:''}; /* paste your Instagram / TikTok links between the quotes */
+{const L=[['WhatsApp',`https://wa.me/${CONTACT.wa}`],['Email',`mailto:${CONTACT.email}`],['Instagram',SOC.ig],['TikTok',SOC.tt]].filter(x=>x[1]);$('#foot-links').innerHTML=L.map(x=>`<a href="${x[1]}" target="_blank" rel="noopener noreferrer">${x[0]}</a>`).join('');$('.wa').href=`https://wa.me/${CONTACT.wa}?text=${encodeURIComponent('Hi The Runway!')}`}
+const dk=on=>{document.documentElement.classList.toggle('dark',on);try{localStorage.setItem('runway-dark',on?'1':'0')}catch(e){}};
+try{if(localStorage.getItem('runway-dark')==='1')dk(true)}catch(e){}
+$('#theme').onclick=()=>dk(!document.documentElement.classList.contains('dark'));
+document.addEventListener('click',e=>{const g=e.target.closest('[data-guide]');if(g){$$('.gt').forEach(t=>t.hidden=t.dataset.t!==g.dataset.guide);$('#size-dialog').showModal()}});
+$('#close-size').onclick=()=>$('#size-dialog').close();
+const CAT={ajr:'Sneakers',t5:'Sneakers',l5:'Sneakers',ts:'Tees',sw:'Sweatshirts',sp:'Sweatshirts',ho:'Hoodies',hb:'Hoodies'};let fcat='All',fsort='';
+const drawShop=()=>{const ks=Object.keys(P).filter(k=>fcat==='All'||CAT[k]===fcat);if(fsort)ks.sort((a,b)=>fsort==='lo'?P[a].p-P[b].p:P[b].p-P[a].p);
+ $('#shopgrid').innerHTML=ks.map(k=>`<button class="pc" data-prod="${k}"><span class="pim"><img src="${A+P[k].i}.webp" alt="" loading="lazy"></span><span class="pn">${P[k].n}</span><span class="pp">${money(P[k].p)}</span></button>`).join('');
+ $('#chips').innerHTML=['All',...new Set(Object.values(CAT))].map(c=>`<button class="chip" aria-pressed="${c===fcat}" data-cat="${c}">${c}</button>`).join('')};
+drawShop();
+$('#sort').onchange=e=>{fsort=e.target.value;drawShop()};
+document.addEventListener('click',e=>{const c=e.target.closest('[data-cat]');if(c){fcat=c.dataset.cat;drawShop();return}const pr=e.target.closest('[data-prod]');if(pr){const k=pr.dataset.prod,p=P[k];$('#pd-name').textContent=p.n;$('#pd-img').src=A+p.i+'.webp';$('#pd-price').textContent=money(p.p);$('#pd-desc').textContent=CAT[k]+' · The Runway';$('#pd-leg').innerHTML=`${p.L} <button type="button" class="sg" data-guide="${p.L=='Size'?'top':'shoe'}">Size guide</button>`;$('#pd-vals').innerHTML=p.o.map((o,x)=>`<label class="pill"><input type="radio" name="pds" value="${p.ids[x]}"${x?'':' checked'}><span>${o}</span></label>`).join('');$('#prod-dialog').showModal()}});
+$('#close-prod').onclick=()=>$('#prod-dialog').close();
+$('#pd-add').onclick=()=>{Bag.add([{id:+$('#pd-vals input:checked').value,quantity:1}]);$('#prod-dialog').close()};
 </script>
 </body></html>
