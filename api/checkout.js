@@ -4,6 +4,8 @@ const RATE = 1500; // 1 USD = 1500 NGN (keep the same as RATE in index.html)
 const SHOES = new Set([57015167025457,57015167058225,57015167090993,57015167123761,57015167156529,57015167189297,57015167222065,57015166730545,57015166763313,57015166796081,57015166828849,57015166861617,57015166894385,57015166927153,57015176364337,57015176397105,57015176429873,57015176462641,57015176495409,57015176528177,57015176560945]);
 const APPAREL = new Set([56835911582001,56835911614769,56835911647537,56835911680305,56835806396721,56835806429489,56835806462257,56835806495025,56836143743281,56836143776049,56836143808817,56836143841585,56836002185521,56836002218289,56836002251057,56836002283825,56836251681073,56836251713841,56836251746609,56836251779377]);
 
+const NEWP = { 1: 79, 2: 129, 3: 169, 4: 189, 5: 189, 6: 139, 7: 159, 8: 179 }; // USD prices of the newer products
+
 module.exports = async (req, res) => {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
   const key = process.env.FLW_SECRET_KEY;
@@ -19,7 +21,12 @@ module.exports = async (req, res) => {
     if (!(q >= 1 && q <= 20)) return res.status(400).json({ error: 'Bad quantity' });
     if (SHOES.has(id)) usd += 149 * q;
     else if (APPAREL.has(id)) usd += 199 * q;
-    else return res.status(400).json({ error: 'Unknown item' });
+    else {
+      // Newer products: id = 7000000 + productNumber*10 + sizeNumber
+      const n = Math.floor((id - 7000000) / 10), j = (id - 7000000) % 10;
+      if (NEWP[n] && j < (n >= 6 ? 7 : 4)) usd += NEWP[n] * q;
+      else return res.status(400).json({ error: 'Unknown item' });
+    }
   }
   const cur = currency === 'NGN' ? 'NGN' : 'USD';
   const amount = cur === 'NGN' ? Math.round(usd * RATE) : usd;
